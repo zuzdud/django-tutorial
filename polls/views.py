@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
+from django.http import HttpResponse
 
 from .models import Choice, Question
 
@@ -54,3 +55,6 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+def home(request):
+    return HttpResponse("Is working!")
