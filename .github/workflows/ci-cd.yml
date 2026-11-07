@@ -1,13 +1,11 @@
 name: CI/CD Pipeline
 
-# Wyzwalanie potoku na push i pull request do gałęzi main
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
-# Uprawnienia potrzebne do wrzucania obrazu na GHCR
 permissions:
   contents: read
 
@@ -76,7 +74,7 @@ jobs:
   build-and-push:
     needs: [lint, test]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     permissions:
       contents: read
